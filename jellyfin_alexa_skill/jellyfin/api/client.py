@@ -32,6 +32,10 @@ class JellyfinClient:
         self.client_name = client_name
 
     @staticmethod
+    def _join_url(baseurl, path):
+        return '/'.join([baseurl.rstrip('/'), path.lstrip('/')])
+
+    @staticmethod
     def _build_emby_auth_header(client_name: str = APP_NAME,
                                 device_name: str = "NONE",
                                 device_id: str = "NONE",
@@ -200,7 +204,7 @@ class JellyfinClient:
 
         params_url = urllib.parse.urlencode(params)
 
-        url = urllib.parse.urljoin(url, path)
+        url = self._join_url(url, path)
         url += "?" + params_url
         return stream_type, url
 
@@ -291,7 +295,7 @@ class JellyfinClient:
         url = self.server_endpoint
         image_type = image_info[image_index]["ImageType"]
         path = f"/Items/{item_id}/Images/{image_type}"
-        url = urllib.parse.urljoin(url, path)
+        url = self._join_url(url, path)
 
         return url
 
