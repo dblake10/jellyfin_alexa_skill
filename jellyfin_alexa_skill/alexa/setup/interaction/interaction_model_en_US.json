@@ -129,7 +129,11 @@
           "name": "PlayArtistSongsIntent",
           "samples": [
             "Play songs from {musician}",
-            "Play music from {musician}"
+            "Play music from {musician}",
+            "Play the musician {musician}",
+            "Play the artist {musician}",
+            "Play musician {musician}",
+            "Play artist {musician}"
           ],
           "slots": [
             {
